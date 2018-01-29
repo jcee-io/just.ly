@@ -17,6 +17,6 @@ This will be the backbone of our service, we will have two routes, two GET reque
 
 We will be using the key-value function of this cache/store to store/acquire our URL using the shortened ID as our key. In order to use in the internet, a third-party Redis server might be needed. Redis Labs is going to be used to complete this project
 
-## ShortId
+### ShortId
 
 This will be our endpoint generation for the shortened url, and our key for the actual url to be stored in Redis.
