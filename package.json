@@ -2,9 +2,11 @@
   "name": "URLshortener",
   "version": "1.0.0",
   "description": "The following design will be implemented in this microservice with a few exceptions. Rather than creating multiple servers, to keep it at a smaller scale, makeshift microservices will be created using different files and functions. Although, future developments will allow a creation of the system architecture with multiple microservices, and load balancing.",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "server-dev": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +20,11 @@
   },
   "homepage": "https://github.com/jcruzz/URL-Shortener#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "redis": "^2.8.0",
-    "shortid": "^2.2.8"
+    "shortid": "^2.2.8",
+    "valid-url": "^1.0.9"
   }
 }
