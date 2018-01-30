@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/jcruzz/URL-Shortener/issues"
   },
-  "homepage": "https://github.com/jcruzz/URL-Shortener#readme"
+  "homepage": "https://github.com/jcruzz/URL-Shortener#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "redis": "^2.8.0",
+    "shortid": "^2.2.8"
+  }
 }
