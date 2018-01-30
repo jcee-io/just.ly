@@ -1,0 +1,20 @@
+{
+  "name": "URLshortener",
+  "version": "1.0.0",
+  "description": "The following design will be implemented in this microservice with a few exceptions. Rather than creating multiple servers, to keep it at a smaller scale, makeshift microservices will be created using different files and functions. Although, future developments will allow a creation of the system architecture with multiple microservices, and load balancing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcruzz/URL-Shortener.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcruzz/URL-Shortener/issues"
+  },
+  "homepage": "https://github.com/jcruzz/URL-Shortener#readme"
+}
