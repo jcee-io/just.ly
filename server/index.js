@@ -6,7 +6,7 @@ const redis = Promise.promisifyAll(require('redis'));
 const shortid = require('shortid');
 
 const app = express();
-const client = redis.createClient(6379);
+const client = redis.createClient(process.env.REDIS_URL || 6379);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
