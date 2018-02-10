@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('client'));
 
 app.get('/new', async (req,res) => {
-	if(req.query) {
+	if(!req.query) {
 		res.send('Not A Valid URL');
 		return;
 	}
