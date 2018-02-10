@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('client'));
 
 app.get('/new', async (req,res) => {
-	//let value = await client.getAsync(req.query);
 	let results = true;
 	let id = shortid.generate();
 	let input = req.query.input;
@@ -42,7 +41,7 @@ app.get('/:id', async (req,res) => {
 	if(!hasHyperlink) {
 		URL = 'http://' + URL;
 	}
-	
+
 	res.statusCode = 302;
 	res.setHeader('Location', URL);
 	res.end();	

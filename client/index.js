@@ -5,8 +5,6 @@ const handler = async ({ key, target }, object) => {
   let input = target.value
   let { data } = await axios.get('/new', { params: { input } });
 
-  console.log(data);
-
   if(data.results) {
   	message.textContent = 'Shortened URL: ' + document.URL + data.id;
   } else {
