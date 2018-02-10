@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('client'));
 
-app.get('/new', (req,res) => {
+app.get('/new', async (req,res) => {
 	//let value = await client.getAsync(req.query);
 	let results = true;
 	let id = shortid.generate();
@@ -22,31 +22,29 @@ app.get('/new', (req,res) => {
 	if(!validator.isURL(input)) {
 		results = false; 
 		id = null;
-		res.json({ results, id, input });
 	} else {
-		client.setAsync(id, input)
-		  .then(() => {
-		  	res.json({ results, id, input });
-		  });
+		await client.setAsync(id, input)	  	
 	}
+
+	res.json({ results, id, input });
 });
 
-app.get('/:id', (req,res) => {
-	client.get(req.params.id, (err, URL) => {
-		const hasHyperlink = URL.slice(0,7) === 'http://' || URL.slice(0,8) === 'https://';
+app.get('/:id', async (req,res) => {
+	let URL = await client.getAsync(req.params.id);
 
-		if(!hasHyperlink) {
-			URL = 'http://' + URL;
-		}
+	if(!URL) {
+		res.send('Not A Valid URL');
+		return;
+	}
 
-		if(err) {
-			console.log(err);
-			res.end();
-		} else {
-			res.statusCode = 302;
-			res.setHeader('Location', URL);
-			res.end();
-		}
-	});
+	const hasHyperlink = URL.slice(0,7) === 'http://' || URL.slice(0,8) === 'https://';
+
+	if(!hasHyperlink) {
+		URL = 'http://' + URL;
+	}
+	
+	res.statusCode = 302;
+	res.setHeader('Location', URL);
+	res.end();	
 });
 app.listen(process.env.PORT || 3000);
