@@ -1,6 +1,16 @@
+const message = document.getElementById('message');
+
 const handler = async ({ key, target }, object) => {
   if(key !== 'Enter') return;
+  let input = target.value
+  let { data } = await axios.get('/new', { params: { input } });
 
-  let urls = await axios.get('/new', { params: target.value });
+  console.log(data);
 
+  if(data.results) {
+  	message.textContent = 'Shortened URL: ' + document.URL + data.id;
+  } else {
+  	message.textContent = 'Not Valid URL. Please try again';
+  }
+  target.value = '';
  };
